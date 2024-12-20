@@ -87,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     // Token is not valid or expired, show login form
     loginForm.style.display = "block";
-    // document.getElementsByClassName("content-section").style.display = "none";
   }
 });
 
@@ -134,3 +133,6 @@ document
   .addEventListener("click", function () {
     toggleContainerVisibility("service-container");
   });
+document.getElementById("stats-button").addEventListener("click", function () {
+  toggleContainerVisibility("stats-container");
+});

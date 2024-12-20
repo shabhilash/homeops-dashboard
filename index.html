@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles/login.css" />
     <link rel="stylesheet" href="styles/service.css" />
     <link rel="stylesheet" href="styles/spinner.css" />
+    <link rel="stylesheet" href="styles/stats.css" />
   </head>
   <body>
     <div id="toast-container"></div>
@@ -27,6 +28,11 @@
           <li>
             <a class="button" id="service-button" href="javascript:void(0)"
               >Service</a
+            >
+          </li>
+          <li>
+            <a class="button" id="stats-button" href="javascript:void(0)"
+              >Disk Usage</a
             >
           </li>
           <li>
@@ -154,6 +160,13 @@
           </div>
         </div>
         <!-- Service Container End -->
+        <!-- Dashboard -->
+        <div id="stats-container" class="content-section">
+          <h2>Server Disk Usage Stats</h2>
+          <div class="stats-card-container">
+            <!-- Cards will be dynamically added here -->
+          </div>
+        </div>
 
         <!-- <div
           id="template-container"
@@ -171,5 +184,6 @@
     <script src="js/login.js"></script>
     <script src="js/loggers.js"></script>
     <script src="js/service.js"></script>
+    <script src="js/disk-usage.js"></script>
   </body>
 </html>
