@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=1280, initial-scale=1.0, user-scalable=no"
+    />
+    <title>HomeOps</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/toast.css" />
+    <link rel="stylesheet" href="styles/login.css" />
+    <link rel="stylesheet" href="styles/service.css" />
+    <link rel="stylesheet" href="styles/spinner.css" />
+  </head>
+  <body>
+    <div id="toast-container"></div>
+    <div class="dashboard-container">
+      <div class="sidebar" id="sidebar" style="display: none">
+        <h2 id="sidebar-title"><a href="/">HomeOps</a></h2>
+        <ul>
+          <li>
+            <a class="button" id="loggers-button" href="javascript:void(0)"
+              >HomeOps Loggers</a
+            >
+          </li>
+          <li>
+            <a class="button" id="service-button" href="javascript:void(0)"
+              >Service</a
+            >
+          </li>
+          <li>
+            <a
+              class="button button-secondary"
+              target="_blank"
+              href="https://github.com/shabhilash/homeops-api"
+              >API
+              <span class="material-icons" style="font-size: 16px"
+                >link</span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              class="button button-secondary"
+              target="_blank"
+              href="https://github.com/shabhilash/homeops-dashboard"
+              >Dashboard
+              <span class="material-icons" style="font-size: 16px"
+                >link</span
+              ></a
+            >
+          </li>
+        </ul>
+        <span id="timer-container" role="group" class="timer-container">
+          <button
+            id="timer"
+            class="button"
+            style="display: none"
+            disabled
+            data-toggle="tooltip"
+            title="Token Validity"
+            onclick="showToast('Token Validity','info',1000)"
+          ></button>
+          <button
+            onclick="logout()"
+            id="logout"
+            class="button"
+            style="display: none"
+          >
+            Logout
+          </button>
+        </span>
+      </div>
+
+      <div class="main-content">
+        <!-- Login Form -->
+        <div id="login-form">
+          <h4 class="text-center">Welcome, Login!</h4>
+          <form id="login-form-submit">
+            <input type="text" id="username" placeholder="Username" required />
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+            <input
+              type="text"
+              id="baseurl"
+              placeholder="Server Address [http://127.0.0.1:8000/api/v1]"
+            />
+            <button type="submit">Sign In</button>
+          </form>
+
+          <!-- Loading Spinner (Hidden by default) -->
+          <div id="loading-container" style="display: none">
+            <div class="loader login-loader"></div>
+          </div>
+        </div>
+        <!-- Login Form End -->
+
+        <!-- Loggers Container -->
+        <div
+          id="loggers-container"
+          class="content-section"
+          style="display: none"
+        >
+          <h2>Loggers List</h2>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search loggers by name"
+            class="search-input"
+          />
+          <table>
+            <thead>
+              <tr>
+                <th>Logger Name</th>
+                <th>Logger Level</th>
+                <th>Save</th>
+              </tr>
+            </thead>
+            <tbody id="logger-table-body">
+              <!-- Rows will be dynamically added here -->
+            </tbody>
+          </table>
+        </div>
+        <!-- Loggers Container End -->
+
+        <!-- Service Container -->
+        <div
+          id="service-container"
+          class="content-section"
+          style="display: none"
+        >
+          <h2>Service</h2>
+          <input
+            type="text"
+            id="serviceInput"
+            placeholder="Enter Service name"
+            class="search-input"
+          />
+
+          <button onclick="getServiceStatus()" id="fetchServiceStatusBtn">
+            Check Service Status
+          </button>
+          <div id="loadingSpinner" class="status-card hidden">
+            <span class="loader"></span>
+          </div>
+          <div id="serviceStatus" class="status-card hidden">
+            <p id="status">Status: <span id="statusSpan"></span></p>
+            <p id="service">Service: <span></span></p>
+          </div>
+        </div>
+        <!-- Service Container End -->
+
+        <!-- <div
+          id="template-container"
+          class="content-section"
+          style="display: none"
+        >
+          <h2>Template Container</h2>
+        </div> -->
+      </div>
+      <!-- Main content End -->
+    </div>
+
+    <script src="js/toast.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/loggers.js"></script>
+    <script src="js/service.js"></script>
+  </body>
+</html>

@@ -1,0 +1,291 @@
+:root {
+  --primary-color: #3498db; /* Primary blue */
+  --secondary-color: #2ecc71; /* Secondary green */
+  --accent-color: #e74c3c; /* Accent red */
+  --background-color: #1e272e; /* Dark background */
+  --sidebar-background-color: #2f3640; /* Darker gray for sidebar */
+  --text-color: #ecf0f1; /* Light gray for text */
+  --text-light-color: #95a5a6; /* Lighter gray for less prominent text */
+  --border-color: #3d3d3d; /* Border color */
+  --hover-color: #2980b9; /* Hover color for buttons */
+  --focus-ring-color: rgba(52, 152, 219, 0.5); /* Focus ring color */
+  --primary-btn: #3498db; /* Primary button color */
+  --secondary-btn: #2f3640; /* Button text color */
+  --success-color: #2ecc71; /* Success color */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+.sidebar {
+  background-color: var(--sidebar-background-color);
+  color: var(--text-light-color);
+  padding: 20px;
+  border-right: 1px solid var(--border-color);
+  width: 250px; /* Sidebar width */
+  position: relative; /* Fix sidebar to the left */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden; /* Allow sidebar to scroll if content overflows */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content at the top */
+}
+.sidebar h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a,
+.sidebar h2 a {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background-color: var(--hover-color);
+}
+
+.sidebar .footer {
+  font-size: 0.8em;
+  color: var(--text-light-color);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.main-content {
+  margin-left: auto; /* Leave space for fixed sidebar */
+  padding: 20px;
+  overflow-y: auto; /* Allow the main content to scroll */
+  flex-grow: 1;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: var(--primary-btn);
+  color: var(--secondary-btn);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.05);
+}
+
+.button:active {
+  background-color: var(--accent-color);
+  transform: scale(1);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+}
+
+.button-secondary {
+  background-color: var(--text-light-color);
+}
+
+.content-section {
+  background-color: var(--sidebar-background-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  display: none; /* Default display, can be changed with JavaScript */
+}
+
+.content-section div {
+  margin-bottom: 20px;
+}
+
+.content-section select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.content-section h2 {
+  color: var(--text-color);
+  margin: 10px 0;
+  font-size: 30px;
+  text-align: center;
+}
+.content-section p {
+  color: var(--text-light-color);
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.content-section button {
+  padding: 10px 20px;
+  background-color: var(--primary-btn);
+  color: var(--secondary-btn);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.content-section button:hover {
+  background-color: var(--hover-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--sidebar-background-color);
+  color: var(--text-light-color);
+}
+
+td {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+select {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.save-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+.save-button:hover {
+  color: var(--hover-color);
+}
+
+.save-button:focus {
+  outline: none;
+}
+
+/* Override media query for mobile screens */
+@media (max-width: 768px) {
+  .dashboard-container {
+    grid-template-columns: 1fr; /* Disable the mobile stacking and force a single column layout */
+  }
+
+  .sidebar {
+    width: 250px; /* Set a fixed sidebar width */
+  }
+
+  .main-content {
+    margin-left: 250px; /* Adjust the content to the right of the sidebar */
+  }
+}
+
+.timer-container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  position: static; /* Position at the bottom of the sidebar */
+  bottom: 20px; /* Distance from the bottom */
+  width: 100%; /* Stretch across the width of the sidebar */
+  padding: 10px 0;
+}
+
+/* Button styling for timer-container */
+.timer-container .button {
+  background-color: var(--primary-btn);
+  color: var(--secondary-btn);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.timer-container .button:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.05);
+}
+
+.timer-container .button:active {
+  background-color: var(--accent-color);
+  transform: scale(1);
+}
+
+.timer-container .button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+}
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}

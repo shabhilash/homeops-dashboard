@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Icons");
+
+#toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start; /* Align text to the top of the toast */
+  background-color: #333;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+  position: relative;
+  overflow: hidden;
+  max-height: 200px; /* Limit max height for multiline messages */
+  overflow-y: auto; /* Add scroll if message is too long */
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.success {
+  background-color: #28a745;
+}
+
+.toast.error {
+  background-color: #dc3545;
+}
+
+.toast.info {
+  background-color: #17a2b8;
+}
+
+.toast.warning {
+  background-color: #ffc107;
+}
+
+.toast .icon {
+  margin-right: 10px;
+  font-family: "Material Icons";
+  font-size: 30px;
+}
+
+.toast .close-btn,
+.toast .copy-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  font-family: "Material Icons";
+  font-size: 20px;
+  display: none;
+}
+.toast:hover .copy-btn,
+.toast:hover .close-btn {
+  display: block;
+}
+
+.toast .copy-btn {
+  top: 35px; /* Position the copy button below the close button */
+}
+
+/* Styling for the close button */
+.toast .close-btn:hover,
+.toast .copy-btn:hover {
+  color: #ccc;
+}
+
+.toast .message-text {
+  word-wrap: break-word; /* Ensure text wraps properly */
+  white-space: pre-wrap; /* Allow multiple lines */
+  max-width: 100%;
+}
+
+/* Progress bar */
+.toast .progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 0%; /* Start at 0 width */
+}
+
+/* Add smooth bounce effect when toast appears */
+@keyframes bounceIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slide-out animation */
+@keyframes slideOut {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+.toast.hide {
+  animation: slideOut 0.5s forwards;
+}

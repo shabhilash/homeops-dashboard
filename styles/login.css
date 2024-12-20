@@ -1,0 +1,90 @@
+:root {
+  --primary-color: #3498db; /* Primary blue */
+  --secondary-color: #2ecc71; /* Secondary green */
+  --accent-color: #e74c3c; /* Accent red */
+  --background-color: #1e272e; /* Dark background */
+  --sidebar-background-color: #2f3640; /* Darker gray for sidebar */
+  --text-color: #ecf0f1; /* Light gray for text */
+  --text-light-color: #95a5a6; /* Lighter gray for less prominent text */
+  --border-color: #3d3d3d; /* Border color */
+  --hover-color: #2980b9; /* Hover color for buttons */
+  --focus-ring-color: rgba(52, 152, 219, 0.5); /* Focus ring color */
+  --primary-btn: #3498db; /* Primary button color */
+  --secondary-btn: #2f3640; /* Button text color */
+  --success-color: #2ecc71; /* Success color */
+}
+
+/* Login Form */
+#login-form {
+  background-color: var(--sidebar-background-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 400px;
+}
+
+#login-form h4 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--text-color);
+}
+
+#login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+#login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-btn);
+  color: var(--secondary-btn);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: capitalize;
+  text-align: center;
+  font-weight: bold;
+}
+
+#login-form button:hover {
+  background-color: var(--hover-color);
+}
+
+.login-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Optional: adds a semi-transparent background */
+  z-index: 1000; /* Ensures it's on top of other content */
+}
