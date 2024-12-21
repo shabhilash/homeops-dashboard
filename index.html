@@ -32,28 +32,28 @@
           </li>
           <li>
             <a class="button" id="stats-button" href="javascript:void(0)"
-              >Disk Usage</a
+              >System Stats</a
             >
           </li>
           <li>
             <a
-              class="button button-secondary"
+              class="button"
               target="_blank"
               href="https://github.com/shabhilash/homeops-api"
               >API
-              <span class="material-icons" style="font-size: 16px"
-                >link</span
+              <span class="material-icons" style="font-size: 16px; color: red"
+                >arrow_outward</span
               ></a
             >
           </li>
           <li>
             <a
-              class="button button-secondary"
+              class="button"
               target="_blank"
               href="https://github.com/shabhilash/homeops-dashboard"
               >Dashboard
-              <span class="material-icons" style="font-size: 16px"
-                >link</span
+              <span class="material-icons" style="font-size: 16px; color: red"
+                >arrow_outward</span
               ></a
             >
           </li>
@@ -148,23 +148,41 @@
             class="search-input"
           />
 
-          <button onclick="getServiceStatus()" id="fetchServiceStatusBtn">
-            Check Service Status
+          <select id="action">
+            <option value="start">Start</option>
+            <option value="stop">Stop</option>
+            <option value="restart">Restart</option>
+            <option value="reload">Reload</option>
+            <option value="enable">Enable</option>
+            <option value="disable">Disable</option>
+          </select>
+
+          <button onclick="postServiceAction()" id="performActionButton">
+            Perform Action
           </button>
-          <div id="loadingSpinner" class="status-card hidden">
+          <button onclick="getServiceStatus()" id="checkStatusButton">
+            Check Status
+          </button>
+
+          <div id="loadingSpinner" class="hidden">
             <span class="loader"></span>
           </div>
+
           <div id="serviceStatus" class="status-card hidden">
             <p id="status">Status: <span id="statusSpan"></span></p>
             <p id="service">Service: <span></span></p>
           </div>
+
+          <div id="response" class="status-card hidden"></div>
         </div>
         <!-- Service Container End -->
         <!-- Dashboard -->
         <div id="stats-container" class="content-section">
-          <h2>Server Disk Usage Stats</h2>
-          <div class="stats-card-container">
-            <!-- Cards will be dynamically added here -->
+          <h2>System Stats</h2>
+
+          <!-- Disk Stats -->
+          <div class="stats-card-container" id="disk-stats-container">
+            <!-- Dynamic Disk Stats Cards will be inserted here -->
           </div>
         </div>
 

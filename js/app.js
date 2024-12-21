@@ -36,6 +36,7 @@ function updateTimer() {
 
   if (timeLeft <= 0) {
     // If the token has expired, stop the timer and log out
+    showToast("Session Expired", "warning", 2000);
     logout();
   } else {
     // Calculate minutes and seconds

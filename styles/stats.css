@@ -1,27 +1,3 @@
-:root {
-  --primary-color: #3498db;
-  --secondary-color: #2ecc71;
-  --accent-color: #e74c3c;
-  --background-color: #1e272e;
-  --sidebar-background-color: #2f3640;
-  --text-color: #ecf0f1;
-  --text-light-color: #95a5a6;
-  --border-color: #3d3d3d;
-  --hover-color: #2980b9;
-  --focus-ring-color: rgba(52, 152, 219, 0.5);
-  --primary-btn: #3498db;
-  --secondary-btn: #2f3640;
-  --success-color: #2ecc71;
-}
-
-#stats-container {
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
 h2 {
   font-size: 2em;
   margin-bottom: 20px;
@@ -44,7 +20,7 @@ h2 {
 }
 
 .stats-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-1px);
 }
 
 .stats-card h3 {
