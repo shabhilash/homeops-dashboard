@@ -133,9 +133,17 @@ function displayCPUUsage(data) {
   cpuCard.classList.add("stats-card");
 
   const cardContent = `
-        <h3>CPU Usage</h3>
-        <p>${data.cpu_usage}</p>
-      `;
+  <h3>CPU Usage</h3>
+  <p><strong>User Time:</strong> ${data.user}</p>
+  <p><strong>System Time:</strong> ${data.system}</p>
+  <p><strong>Nice Time:</strong> ${data.nice}</p>
+  <p><strong>Idle Time:</strong> ${data.idle}</p>
+  <p><strong>Wait Time:</strong> ${data.wait}</p>
+  <p><strong>Hardware Interrupts:</strong> ${data.hardware_interrupts}</p>
+  <p><strong>Software Interrupts:</strong> ${data.software_interrupts}</p>
+  <p><strong>Steal Time:</strong> ${data.steal}</p>
+`;
+
   cpuCard.innerHTML = cardContent;
   statsCardContainer.appendChild(cpuCard);
 }
@@ -152,8 +160,17 @@ function displayMemoryUsage(data) {
 
   const cardContent = `
         <h3>Memory Usage</h3>
-        <p>${data.memory_usage_percent}</p>
+        <p><strong>Total Memory:</strong> ${data.total_memory} MB</p>
+        <p><strong>Used Memory:</strong> ${data.used_memory} MB</p>
+        <p><strong>Free Memory:</strong> ${data.free_memory} MB</p>
+        <p><strong>Buffers Memory:</strong> ${data.buffers_memory} MB</p>
+        <p><strong>Cached Memory:</strong> ${data.cached_memory} MB</p>
+        <p><strong>Memory Usage Percent:</strong> ${data.memory_usage_percent}%</p>
+        <p><strong>Total Swap:</strong> ${data.total_swap} MB</p>
+        <p><strong>Used Swap:</strong> ${data.used_swap} MB</p>
+        <p><strong>Free Swap:</strong> ${data.free_swap} MB</p>
       `;
+
   memoryCard.innerHTML = cardContent;
   statsCardContainer.appendChild(memoryCard);
 }

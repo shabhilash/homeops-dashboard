@@ -89,6 +89,27 @@ html {
   margin-top: 20px;
 }
 
+/* Custom scrollbar for WebKit browsers (Chrome, Safari) */
+#sidebar::-webkit-scrollbar {
+  width: 2px; /* Set the width of the scrollbar */
+}
+
+/* Custom scrollbar track */
+#sidebar::-webkit-scrollbar-track {
+  background: transparent; /* Make the track invisible */
+}
+
+/* Custom scrollbar thumb */
+#sidebar::-webkit-scrollbar-thumb {
+  background: var(--border-color); /* Set the thumb color */
+  border-radius: 10px; /* Rounded thumb */
+}
+
+/* Thumb hover effect */
+#sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--hover-color); /* Darker thumb on hover */
+}
+
 .main-content {
   margin-left: auto; /* Leave space for fixed sidebar */
   padding: 20px;

@@ -59,6 +59,7 @@ function logout() {
   // Clear session storage
   localStorage.removeItem("access_token");
   localStorage.removeItem("expires_at");
+  localStorage.removeItem("base_url");
 
   // Hide actions container and show login form
   document.getElementById("login-form").style.display = "block";
@@ -118,22 +119,3 @@ function toggleContainerVisibility(containerId) {
     currentVisibleContainerId = containerId; // Update the currently visible container
   }
 }
-
-// Show/Hide loggers-container (Logger Table) on button click
-document
-  .getElementById("loggers-button")
-  .addEventListener("click", function () {
-    // Load logger list (assuming the token is valid)
-    const token = localStorage.getItem("access_token");
-    loadLoggerList(token);
-    toggleContainerVisibility("loggers-container");
-  });
-
-document
-  .getElementById("service-button")
-  .addEventListener("click", function () {
-    toggleContainerVisibility("service-container");
-  });
-document.getElementById("stats-button").addEventListener("click", function () {
-  toggleContainerVisibility("stats-container");
-});
