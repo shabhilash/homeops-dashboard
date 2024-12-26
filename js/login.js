@@ -20,6 +20,13 @@ document
     loginData.append("username", username);
     loginData.append("password", password);
 
+    // Create an AbortController to handle timeout
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    // Set a timeout to abort the fetch request
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5000ms = 5 seconds timeout
+
     // Make the login request using fetch
     fetch(baseURL + "/token", {
       method: "POST",
@@ -27,12 +34,18 @@ document
         "Content-Type": "application/x-www-form-urlencoded", // Ensure form encoding
       },
       body: loginData.toString(), // Send the data as a URL-encoded string
+      signal: signal, // Attach the signal to the fetch request
     })
       .then((response) => {
+        clearTimeout(timeoutId); // Clear the timeout on successful response
         if (!response.ok) {
-          throw new Error(
-            "Login failed! Please check your username and password."
-          );
+          return response.json().then((errorData) => {
+            // Show specific error based on response
+            console.debug(errorData);
+            throw new Error(
+              errorData.detail || "Login failed. Please check your credentials."
+            );
+          });
         }
         return response.json();
       })
@@ -55,10 +68,13 @@ document
         setInterval(updateTimer, 1000); // Update the timer every second
       })
       .catch((error) => {
-        console.error("Error logging in:", error); // Log the error message
-
-        // Show error toast message using existing showToast function
-        showToast(error.message, "error", 3000);
+        if (error.name === "AbortError") {
+          console.error("Error logging in: Connection timed out"); // Log the timeout error
+          showToast("Connection timed out. Please try again.", "error", 3000);
+        } else {
+          console.error("Error logging in:", error); // Log the error message
+          showToast(error.message, "error", 3000);
+        }
       })
       .finally(() => {
         // Hide the loader and re-enable the inputs

@@ -6,6 +6,7 @@
   right: 20px;
   width: 350px;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 10px;
   z-index: 1000;
@@ -13,11 +14,11 @@
 
 .toast {
   display: flex;
-  align-items: flex-start; /* Align text to the top of the toast */
-  background-color: #333;
-  color: #fff;
+  align-items: center; /* Center align items vertically */
+  background-color: var(--primary-color);
+  color: var(--text-color);
   padding: 15px 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transform: translateY(20px);
@@ -34,25 +35,25 @@
 }
 
 .toast.success {
-  background-color: #28a745;
+  background-color: #2e7d32; /* Darker green */
 }
 
 .toast.error {
-  background-color: #dc3545;
+  background-color: #c62828; /* Darker red */
 }
 
 .toast.info {
-  background-color: #17a2b8;
+  background-color: #1565c0; /* Darker blue */
 }
 
 .toast.warning {
-  background-color: #ffc107;
+  background-color: #b85300; /* Darker orange */
 }
 
 .toast .icon {
-  margin-right: 10px;
+  margin-right: 5px;
   font-family: "Material Icons";
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .toast .close-btn,
@@ -87,13 +88,22 @@
 }
 
 /* Progress bar */
-.toast .progress-bar {
+.toast .circular-progress {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 0%; /* Start at 0 width */
+  top: 15px;
+  right: 15px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: conic-gradient(
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.5) 0%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* Add smooth bounce effect when toast appears */

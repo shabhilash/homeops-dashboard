@@ -58,10 +58,10 @@ function showToast(message, type = "info", duration = 3000) {
   };
   toast.appendChild(copyButton);
 
-  // Add progress bar
-  const progressBar = document.createElement("div");
-  progressBar.classList.add("progress-bar");
-  toast.appendChild(progressBar);
+  // Add circular progress bar
+  const circularProgress = document.createElement("div");
+  circularProgress.classList.add("circular-progress");
+  toast.appendChild(circularProgress);
 
   // Append the toast to the container
   toastContainer.appendChild(toast);
@@ -84,7 +84,7 @@ function showToast(message, type = "info", duration = 3000) {
     }
     progress -= decrement;
     elapsedTime += 50; // Increment elapsed time by 50ms
-    progressBar.style.width = `${progress}%`;
+    circularProgress.style.background = `conic-gradient(rgba(255, 255, 255, 0.5) ${progress}%, rgba(255, 255, 255, 0.1) ${progress}%)`;
   }, 50);
 
   // Stop the timer when hovering over the toast
@@ -104,7 +104,7 @@ function showToast(message, type = "info", duration = 3000) {
         clearInterval(resumeInterval);
       }
       remainingProgress -= decrement;
-      progressBar.style.width = `${remainingProgress}%`;
+      circularProgress.style.background = `conic-gradient(rgba(255, 255, 255, 0.5) ${remainingProgress}%, rgba(255, 255, 255, 0.1) ${remainingProgress}%)`;
     }, 50);
 
     timeoutId = setTimeout(() => {

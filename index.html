@@ -48,19 +48,30 @@
         <div id="login-form">
           <h4 class="text-center">Welcome, Login!</h4>
           <form id="login-form-submit">
-            <input type="text" id="username" placeholder="Username" required />
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
+              autocomplete="username"
+              required
+            />
             <input
               type="password"
               id="password"
+              name="password"
               placeholder="Password"
               required
             />
             <input
               type="text"
               id="baseurl"
-              placeholder="Server Address [http://127.0.0.1:8000/api/v1]"
+              name="baseurl"
+              placeholder="Server Address [http://127.0.0.1:8000]"
             />
-            <button type="submit">Sign In</button>
+            <button id="login-submit-btn" name="login-submit-btn" type="submit">
+              Sign In
+            </button>
           </form>
 
           <!-- Loading Spinner (Hidden by default) -->
@@ -76,7 +87,7 @@
           class="content-section"
           style="display: none"
         >
-          <h2>Loggers List</h2>
+          <h2>Log Management</h2>
           <input
             type="text"
             id="search-input"

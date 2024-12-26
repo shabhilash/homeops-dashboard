@@ -1,4 +1,5 @@
 function loadLoggerList(token) {
+  let baseURL = localStorage.getItem("base_url");
   fetch(baseURL + "/log-list", {
     method: "GET",
     headers: {
@@ -94,7 +95,7 @@ function loadLoggerList(token) {
 // Function to save the updated log level
 function saveLogLevel(loggerName, newLevel) {
   const token = localStorage.getItem("access_token");
-  console.log(`Saving log level for ${loggerName} to ${newLevel}`);
+  console.debug(`Saving log level for ${loggerName} to ${newLevel}`);
 
   // Define the payload to send to the server
   const payload = {
@@ -119,12 +120,8 @@ function saveLogLevel(loggerName, newLevel) {
       return response.json();
     })
     .then((data) => {
-      console.log("Log level updated successfully:", data);
-      showToast(
-        `${loggerName} - Log level updated to ${newLevel} successfully!`,
-        "info",
-        2000
-      );
+      console.debug("Log level updated successfully:", data);
+      showToast(`${loggerName} - Updated to ${newLevel}.`, "info", 2000);
       loadLoggerList(token);
     })
     .catch((error) => {
